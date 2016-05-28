@@ -3,12 +3,8 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin('/c/users/pjoergensen/.vim/bundle')
+call vundle#begin()
 
-
-" Ctags
-set tags=./.git/tags;~/.
-set tags+=~/.vim/tags/qt5
 
 " Vundle
 Bundle 'gmarik/vundle'
@@ -16,37 +12,26 @@ Bundle 'gmarik/vundle'
 " repos on GitHub
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'Chiel92/vim-autoformat'
 Bundle 'octol/vim-cpp-enhanced-highlight'
-Bundle 'wellle/targets.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'sjl/gundo.vim.git'
-Bundle 'skroll/vim-taghighlight'
+Bundle 'rust-lang/rust.vim'
 Bundle 'tomasr/molokai'
 Bundle 'kien/ctrlp.vim'
+Bundle 'klen/python-mode'
 
 
 " Bundle 'scrooloose/syntastic'
 " Bundle 'Valloric/YouCompleteMe'
-" Bundle 'scrooloose/nerdtree'
-" Bundle 'jistr/vim-nerdtree-tabs'
 
 " non-GitHub repos
 Bundle 'git://git.wincent.com/command-t.git'
 
-
-" Other
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-"Bundle 'monokai'
-"Bundle 'Solarized'
-"Bundle 'neocomplcache'
-Bundle 'Tagbar'
+ " vim.org
 Bundle 'a.vim'
-Bundle 'badwolf'
-"Bundle 'Buffergator'
 
 call vundle#end()
+
 
 " After bundles
 filetype plugin indent on
@@ -74,17 +59,9 @@ syntax enable
 
 if has('gui_running')
     set guioptions-=T           " Remove the toolbar
-    set lines=60                " 40 lines of text instead of 2
-"    set guifont=Courier\ New\ Regular\ 12
-    set guifont=Consolas:h11:cANSI
+    set lines=60                " 40 lines of text instead of 24
+    set guifont=Courier\ New\ Regular\ 12
 endif
-
-" Syntastic
-let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open = 1
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -Wall -fPIC'
 
 
 set mouse=a                 " Automatically enable mouse usage
@@ -118,7 +95,7 @@ set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 
 set list
-"set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
 set shiftwidth=4                " Use indents of 4 spaces
@@ -147,7 +124,7 @@ set statusline+=\ %P                                        " percent through fi
 hi User1 guifg=#112605  guibg=#aefe7B
 hi User2 guifg=#292b00  guibg=#f4f597
 hi User3 guifg=#051d00  guibg=#7dcc7d
-hi User4 guifg=#002600  guibg=#67ab6e
+hi User4 guifg=#002600  guibg=#67ab6e gui=italic
 
 " Keyboard Shortcuts
 
@@ -176,8 +153,6 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
-
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 
 set noswapfile
